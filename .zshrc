@@ -12,6 +12,40 @@ setopt appendhistory                                            # Immediately ap
 setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
 setopt autocd                                                   # if only directory path is entered, cd there.
 
+# Use modern completion system
+alias cp="cp -i"                                                # Confirm before overwriting something
+autoload -Uz compinit
+alias df='df -h'                                                # Human-readable sizes
+compinit
+alias free='free -m'                                            # Show sizes in MB
+
+alias gitu='git add . && git commit && git push'
+zstyle ':completion:*' auto-description 'specify: %d'
+
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+# Theming section  
+zstyle ':completion:*' format 'Completing %d'
+#autoload -U compinit colors zcalc
+zstyle ':completion:*' group-name ''
+#compinit -d
+zstyle ':completion:*' menu select=2
+#colors
+eval "$(dircolors -b)"
+
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# enable substitution for prompt
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+setopt prompt_subst
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+
+zstyle ':completion:*' menu select=long
+# Prompt (on left side) similar to default bash prompt, or redhat zsh prompt with colors
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+ #PROMPT="%(!.%{$fg[red]%}[%n@%m %1~]%{$reset_color%}# .%{$fg[green]%}[%n@%m %1~]%{$reset_color%}$ "
+zstyle ':completion:*' use-compctl false
+# Maia prompt
+zstyle ':completion:*' verbose true
+
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' rehash true                              # automatically find new executables in path 
