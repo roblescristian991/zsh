@@ -12,14 +12,6 @@ setopt appendhistory                                            # Immediately ap
 setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
 setopt autocd                                                   # if only directory path is entered, cd there.
 
-# Use modern completion system
-alias cp="cp -i"                                                # Confirm before overwriting something
-autoload -Uz compinit
-alias df='df -h'                                                # Human-readable sizes
-compinit
-alias free='free -m'                                            # Show sizes in MB
-
-alias gitu='git add . && git commit && git push'
 zstyle ':completion:*' auto-description 'specify: %d'
 
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -93,6 +85,7 @@ alias cp="cp -i"                                                # Confirm before
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
+alias ls='ls --color=auto'
 
 # Theming section  
 #autoload -U compinit colors zcalc
