@@ -45,7 +45,7 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias gitu='git push -u origin'
+alias gitp='git push -u origin'
 alias gita='git add .'
 alias gitc='git commit -m '
 alias gitr='git remote add origin'
